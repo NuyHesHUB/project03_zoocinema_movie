@@ -6,15 +6,18 @@ import reducer from './store/reducers/reducer';
 
 import './styles/App.css';
 import Home from './router/Home';
+import Navigation from './router/Navigation';
 
 function App() {
   const store = createStore(reducer);
   return (
     <BrowserRouter>
     <Provider store={store}>
-        <Routes>
-          <Route path={"/"} element={<Home/>}></Route>
-        </Routes>
+        <Navigation/>
+          <Routes>
+            <Route path={"/"} element={<Home/>}></Route>
+          </Routes>
+        
     </Provider>
     </BrowserRouter>
   );
