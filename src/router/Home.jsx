@@ -11,13 +11,12 @@ function Home({movieLoading, movies}){
               },
             }=await axios.get('https://yts-proxy.now.sh/list_movies.json?sort_by=rating')
               console.log(movies);
-              /* this.setState({movies, isLoading:false}) */
         }})
         
         
         return (
             <div>
-                home
+                home 1212
             </div>
         );
 };
