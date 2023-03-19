@@ -1,41 +1,7 @@
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-export const StyledFrame = styled.div`
-    /* max-width: 1400px;
-    margin: 0 auto; */
-`
-export const TitleWrap = styled.div`
-    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, .25), 0 18px 36px -18px rgba(0, 0, 0, .3);
-    padding-bottom: 50px;
-    margin-bottom: 50px;
-    h1{
-        text-align: center;
-        font-size: 64px;
-        font-weight: bold;
-        color: #fff;
-        span{
-            font-size: 80px;
-            font-weight: bold;
-            color: #222;
-        }
-    }
-`
-export const Movies = styled.div`
-    /* margin: 50px 200px; */
-    float: right;
-    display: grid;
-    /* grid-template-columns: repeat(2,minmax(400px,1fr)); */
-    grid-template-columns: repeat(3,minmax(386px,1fr));
-    /* grid-gap: 100px; */
-    grid-gap: 37px;
-    padding: 50px;
-    width: 80%;
-    padding-top: 70px;
-    box-sizing: border-box;
-    /* background: #121212; */
-    background: #121212;
-`
-/* export const Loading = styled.div`
+export const StyledLoading = styled.div`
     width: 80%;
     height: 100vh;
     float: right;
@@ -86,13 +52,22 @@ export const Movies = styled.div`
                     height: 50px;
                 }
             }
-  } */
-    /* span{
-            font-size: 40px;
-            color: #fff;
-            text-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
-            text-transform: uppercase;
-            font-weight: bold;
-        } */
-    
-/* ` */
+  }
+`
+const Loading = () => {
+    return (
+        <StyledLoading>
+            <div className='loader'>
+                <div className='loader_item'>
+                    <span className='dot'></span>
+                    <span className='dot'></span>
+                    <span className='dot'></span>
+                    <span className='dot'></span>
+                    <span className='dot'></span>
+                </div>
+            </div>
+        </StyledLoading>
+    );
+};
+
+export default Loading;

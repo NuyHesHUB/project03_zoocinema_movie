@@ -7,6 +7,7 @@ import reducer from './store/reducers/reducer';
 import './styles/App.css';
 import Home from './router/Home';
 import Navigation from './router/Navigation';
+import HomeDetail from './components/Home/HomeDetail.jsx'
 
 function App() {
   const store = createStore(reducer);
@@ -16,6 +17,7 @@ function App() {
         <Navigation/>
           <Routes>
             <Route path={"/"} element={<Home/>}></Route>
+            <Route path={"/detail/:id"} element={<HomeDetail/>}></Route>
           </Routes>
         
     </Provider>
