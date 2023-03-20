@@ -59,6 +59,9 @@ const HomeMovieFrame=styled.div`
         color: #fff;
         display: block;
     }
+    @media screen and (max-width:1000px){
+        margin-bottom: 20px;
+    }
     
 `
 const HomeMovieImg=styled.img`

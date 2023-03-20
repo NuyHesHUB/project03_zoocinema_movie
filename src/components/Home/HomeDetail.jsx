@@ -21,7 +21,7 @@ const DetailTitle=styled.h2`
     text-transform: uppercase;
     color: #666;
 `
-const ImageBox=styled.div`
+const ImageBg=styled.div`
     width: 100%;
     height: 100vh;
     text-align: center;
@@ -31,42 +31,120 @@ const ImageBox=styled.div`
     /* width: 80%; */
     /* margin: 0 40px; */
 `
+const ContentWrap=styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100vh; */
+    /* background: #ff000029; */
+    padding: 50px 50px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+`
 const CoverImage=styled.img`
     /* max-width: 400px;  */
     /* width: 100%; */
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, .25), 0 8px 16px -8px rgba(0, 0, 0, .3);
-    position: absolute;
+    /* position: absolute;
     top: 50px;
-    left: 50px;
+    left: 50px; */
     width: 25%;
     border-radius: 10px;
+    margin-right: 50px;
+    animation: boxani 5s ease-in-out 0.4s infinite;
+    @keyframes boxani {
+                0%,
+                100% {
+                    /* 0px 18px 26px -18px; */
+                    box-shadow: rgb(5 214 217) 0px 0px 50px -10px, rgb(249 7 252) 0px 18px 26px -18px;;
+                }
+                50% {
+                    box-shadow: rgb(249 7 252) 0px 0px 50px -10px, rgb(5 214 217) 0px 18px 26px -18px;;
+                }
+            }
+`
+const CoverContent=styled.div`
+    display: flex;
+    flex-direction: column;
+`
+const ContentTitle=styled.h1`
+    color: #ededed;
+    font-size: 60px;
+`
+const Content=styled.span`
+    color: #ededed;
+    i{
+        font-style: normal;
+        color: tomato;
+    }
+`
+const GenresWrap=styled.ul`
+    display: flex;
+    list-style: none;
+`
+const GenresList=styled.li`
+    color: #ededed;
+    margin-right: 15px;
+    &:last-child{margin-right: 0;}
+    &:last-child::after{display:none;}
+    position: relative;
+    &::after{
+        position: absolute;
+        content: '';
+        top: 5px;
+        right: -9px;
+        width: 2px;
+        height: 70%;
+        background: linear-gradient( to bottom ,#05D6D9 10%,#ffffff 40%, #F907FC 90%);
+    }
+    
 `
 const HomeDetail=()=>{
     const {id} = useParams();
-    const [movieDetail, setMovieDetail] = useState();
+    /* const [movieDetail, setMovieDetail] = useState(); */
+    const [movie, setMovie] = useState();
     const [isLoading, setIsLoading] = useState(true)
     const getMovieDetail = async () => {
         const json = await(
             await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
         ).json();
-        setMovieDetail(json.data.movie);
+        setMovie(json.data.movie);
         setIsLoading(false);
     }
     
     useEffect(()=>{
         getMovieDetail();
     },[]);
-    console.log(movieDetail);
-    /* console.log(isLoading); */
+    /* console.log(movie); */
+    
+    /* console.log(movie.genres); */
+    /* console.log(setMovieDetail); */
     return(
         <StyledHomeDetail>
             {isLoading ? <Loading/> : (
                 <StyledDetailMovie>
-                    
-                    <ImageBox style={{backgroundImage: `url(${movieDetail.background_image})`}}>
+                    <ImageBg style={{backgroundImage: `url(${movie.background_image})`}}>
                    {/*  <DetailTitle>{movieDetail.slug}</DetailTitle> */}
-                    </ImageBox>
-                    <CoverImage src={movieDetail.large_cover_image} alt={movieDetail.title}/>
+                    </ImageBg>
+                    <ContentWrap>
+                        <CoverImage src={movie.large_cover_image} alt={movie.title}/>
+                        <CoverContent>
+                            <ContentTitle>{movie.title}</ContentTitle>
+                            <Content> {movie.year} </Content>
+                            <Content><i>&#9733;</i>{movie.rating}</Content>
+                            {/* <Content>{movieDetail.date_uploaded}</Content> */}
+                            <GenresWrap>
+                                {
+                                    movie.genres.map((genre, idx) => 
+                                        (<GenresList key={idx}>{genre}</GenresList>)
+                                    )
+                                }
+                            </GenresWrap>
+                            <Content> {movie.description_full}</Content>
+                        </CoverContent>
+                    </ContentWrap>
                 </StyledDetailMovie>
             )}
         </StyledHomeDetail>

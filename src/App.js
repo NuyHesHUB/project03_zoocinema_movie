@@ -19,10 +19,10 @@ function App() {
             <Route path={"/"} element={<Home/>}></Route>
             <Route path={"/detail/:id"} element={<HomeDetail/>}></Route>
           </Routes>
-        
     </Provider>
     </BrowserRouter>
   );
 }
 
 export default App;
+
