@@ -16,6 +16,7 @@ function App() {
     <Provider store={store}>
         <Navigation/>
           <Routes>
+            <Route path={"/App"} element={<Home/>}></Route>
             <Route path={"/"} element={<Home/>}></Route>
             <Route path={"/detail/:id"} element={<HomeDetail/>}></Route>
           </Routes>
