@@ -12,7 +12,7 @@ import HomeDetail from './components/Home/HomeDetail.jsx'
 function App() {
   const store = createStore(reducer);
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Provider store={store}>
         <Navigation/>
           <Routes>
