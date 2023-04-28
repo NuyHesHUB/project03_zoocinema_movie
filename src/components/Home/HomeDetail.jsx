@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import { useParams, useParma } from 'react-router-dom';
+import { useParams/* , useParma  */} from 'react-router-dom';
 
 import Loading from '../Loading';
 
@@ -15,12 +15,12 @@ const StyledDetailMovie=styled.div`
     float: right;
     position: relative;
 `
-const DetailTitle=styled.h2`
+/* const DetailTitle=styled.h2`
     text-align: center; 
     margin-bottom: 20px; 
     text-transform: uppercase;
     color: #666;
-`
+` */
 const ImageBg=styled.div`
     width: 100%;
     height: 100vh;
@@ -83,6 +83,7 @@ const Content=styled.span`
 const GenresWrap=styled.ul`
     display: flex;
     list-style: none;
+    padding: 0;
 `
 const GenresList=styled.li`
     color: #ededed;
@@ -116,9 +117,10 @@ const HomeDetail=()=>{
     
     useEffect(()=>{
         getMovieDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
+
     /* console.log(movie); */
-    
     /* console.log(movie.genres); */
     /* console.log(setMovieDetail); */
     return(
@@ -133,7 +135,8 @@ const HomeDetail=()=>{
                         <CoverContent>
                             <ContentTitle>{movie.title}</ContentTitle>
                             <Content> {movie.year} </Content>
-                            <Content><i>&#9733;</i>{movie.rating}</Content>
+                            <br/>
+                            <Content><i>&#9733;</i> {movie.rating} 점</Content>
                             {/* <Content>{movieDetail.date_uploaded}</Content> */}
                             <GenresWrap>
                                 {

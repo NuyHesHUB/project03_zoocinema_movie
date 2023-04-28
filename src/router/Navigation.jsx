@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Movies from '../components/List/MyMovieList';
 import Footer from './Footer';
 
 const NavStyledFrame = styled.div`
@@ -101,17 +102,17 @@ const NavStyledFrame = styled.div`
     
 `
 
-function Navigation(){
+const Navigation= () => {
+
     return (
         <NavStyledFrame>
             <Link to="/" className='logo-wrap'><span className='logo'>&#x2601;</span><span className='logo-title'>ZooCINEMA</span></Link>
-            <ul>
-                <li><Link to="/"><i className="fas fa-home"></i><span className='nav-text'> 홈</span></Link></li>
-                <li><Link to="/about"><i className="fas fa-user-alt"></i><span className='nav-text'> 어바웃</span></Link></li>
-                <li><Link to="/about"><i className="fas fa-film"></i><span className='nav-text'> 나만의 영화리스트 만들기</span></Link></li>
-                <li><Link to="/about"><i className="fab fa-gratipay"></i><span className='nav-text'> 좋아요 표시한 영화</span></Link></li>
-                
-            </ul>
+                <ul>
+                    <li><Link to="/"><i className="fas fa-home"></i><span className='nav-text'>인기작 콘텐츠 추천</span></Link></li>
+                    {/* <li><Link to="/about"><i className="fas fa-user-alt"></i><span className='nav-text'> 어바웃</span></Link></li> */}
+                    <li><Link to="/list" element={<Movies/>}><i className="fas fa-film"></i><span className='nav-text'> 나만의 영화리스트 만들기</span></Link></li>
+                    {/* <li><Link to="/about"><i className="fab fa-gratipay"></i><span className='nav-text'> 좋아요 표시한 영화</span></Link></li> */}
+                </ul>
             <Footer/>
         </NavStyledFrame>
     );

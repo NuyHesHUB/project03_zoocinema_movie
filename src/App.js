@@ -7,7 +7,8 @@ import reducer from './store/reducers/reducer';
 import './styles/App.css';
 import Home from './router/Home';
 import Navigation from './router/Navigation';
-import HomeDetail from './components/Home/HomeDetail.jsx'
+import HomeDetail from './components/Home/HomeDetail.jsx';
+import Movies from './components/List/MyMovieList';
 
 function App() {
   const store = createStore(reducer);
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path={"/App"} element={<Home/>}></Route>
             <Route path={"/"} element={<Home/>}></Route>
+            <Route path={"/list"} element={<Movies/>}></Route>
             <Route path={"/detail/:id"} element={<HomeDetail/>}></Route>
           </Routes>
     </Provider>

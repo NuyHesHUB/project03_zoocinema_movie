@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 /* import styled from 'styled-components'; */
 import {connect} from 'react-redux'
 import axios from 'axios'
@@ -12,8 +12,8 @@ import HomeMovie from '../components/HomeMovie';
 import buildFullPath from "axios/lib/core/buildFullPath"; */
 /* import { history } from '~/index' */ // BrowserHistory
 
-
-import { useQuery } from "react-query"
+/* 
+import { useQuery } from "react-query" */
 
 
 
@@ -32,6 +32,7 @@ function Home(){
     }
     useEffect(()=>{
         getMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     /* console.log(isLoading); */

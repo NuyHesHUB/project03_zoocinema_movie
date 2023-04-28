@@ -127,13 +127,13 @@ function HomeMovie({id, year, rating, title, summary, poster, genres, bg}){
                     <h3>{title}</h3>
                     <h5>{year} <i>&#9733;</i>{rating}</h5>
                     {/* <h6><img src={bg} alt="logo" /></h6> */}
-                    <ul>
+                    {/* <ul>
                         {
                             genres.map((genres, idx)=>{
                                     return <li key={idx}>{genres}</li>
                             })
                         }
-                    </ul>
+                    </ul> */}
                     <hr/>
                     <p>{summary.slice(0,100)}</p>
                 </HomeMovieData>
