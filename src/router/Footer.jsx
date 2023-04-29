@@ -50,9 +50,9 @@ const Footer = () => {
             <span>© ZooCINEMA</span>
             {/* <span>Joo Sehyeon</span> */}
             <FooterSns>
-                <Link to='https://github.com/NuyHesHUB'><i className="fab fa-github"></i></Link>
-                <Link to='https://github.com/NuyHesHUB'><i className="fas fa-blog"></i></Link>
-                <Link to='https://github.com/NuyHesHUB'><i className="fas fa-envelope"></i></Link>
+                <Link to='https://github.com/NuyHesHUB/project03_zoocinema_movie'><i className="fab fa-github"></i></Link>
+                {/* <Link to='https://github.com/NuyHesHUB'><i className="fas fa-blog"></i></Link> */}
+                {/* <Link to='https://github.com/NuyHesHUB'><i className="fas fa-envelope"></i></Link> */}
             </FooterSns>
             
         </StyledFooterFrame>
