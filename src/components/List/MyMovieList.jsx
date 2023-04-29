@@ -33,6 +33,9 @@ const MyMovieListFrame = styled.div`
         height: 100px;
         line-height: 100px;
     }
+    @media screen and (max-width:1200px){
+      width: 100%;
+    }
 `
 
 const MyMovieList = () => {

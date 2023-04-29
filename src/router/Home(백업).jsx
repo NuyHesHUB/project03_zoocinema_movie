@@ -1,27 +1,17 @@
-import React, { useEffect, useState} from 'react';
-/* import styled from 'styled-components'; */
+import React, {/* useCallback,  */useEffect, useState} from 'react';
 import {connect} from 'react-redux'
 import axios from 'axios'
 import { StyledFrame, HomeWrap, HomeTitleWrap, HomeTitle, Movies} from './StyledHome';
 
 import Loading from '../components/Loading';
 import HomeMovie from '../components/HomeMovie';
-/* import { cacheAdapterEnhancer, Cache } from 'axios-extensions'; */
-
-/* import { cacheAdapterEnhancer } from 'axios-extensions'
-import buildFullPath from "axios/lib/core/buildFullPath"; */
-/* import { history } from '~/index' */ // BrowserHistory
-
-/* 
-import { useQuery } from "react-query" */
 
 
-
-function Home(){
+function Home(initialState, key){
     const [movies, setMovies] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const getMovies=()=>{      
         axios.get("https://yts.mx/api/v2/list_movies.json?sort=seeds&limit=50").then((res)=>{
             setMovies(res.data.data.movies)
@@ -32,8 +22,10 @@ function Home(){
     }
     useEffect(()=>{
         getMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     },[])
+
+    console.log('movies',movies);
 
     /* console.log(isLoading); */
         return (

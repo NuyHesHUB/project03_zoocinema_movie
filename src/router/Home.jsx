@@ -1,31 +1,39 @@
-import React, {/* useCallback,  */useEffect, useState} from 'react';
-import {connect} from 'react-redux'
-import axios from 'axios'
-import { StyledFrame, HomeWrap, HomeTitleWrap, HomeTitle, Movies} from './StyledHome';
+import React, { useContext, useEffect, useState} from 'react';
 
+/* Redux */
+import { connect } from 'react-redux';
+
+/* component */
 import Loading from '../components/Loading';
 import HomeMovie from '../components/HomeMovie';
+import { MovieContext } from '../components/Home/MovieContext';
 
+/* Libalary */
+import axios from 'axios';
 
+/* styled */
+import { StyledFrame, HomeWrap, HomeTitleWrap, HomeTitle, Movies} from './StyledHome';
 
 function Home(){
-    const [movies, setMovies] = useState([])
+
+    const { movies, setMovies } = useContext(MovieContext);
     const [isLoading, setIsLoading] = useState(true)
 
-    
-    const getMovies=()=>{      
-        axios.get("https://yts.mx/api/v2/list_movies.json?sort=seeds&limit=50").then((res)=>{
+    useEffect(()=>{
+        if (movies.length > 0) { 
+            setIsLoading(false);
+          } else { // 이전에 가져온 데이터가 없으면
+            axios.get("https://yts.mx/api/v2/list_movies.json?sort=seeds&limit=50").then((res)=>{
             setMovies(res.data.data.movies)
             setIsLoading(!isLoading)
         }).catch((err)=>{
             console.error(err,'axios 에러')
         })
-    }
-    useEffect(()=>{
-        getMovies();
+          }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
+    console.log('movies',movies);
     /* console.log(isLoading); */
         return (
             <StyledFrame>
@@ -69,7 +77,6 @@ function Home(){
 const mapStateToProps = (state) => {
     return{
         loading: state.loading,
-        /* movies: state.movies */
     }
 }
 
